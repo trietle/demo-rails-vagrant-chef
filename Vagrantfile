@@ -9,6 +9,9 @@ Vagrant.configure("2") do |config|
 
   config.vm.define "web" do |cfg|
     config.vm.box = "web"
+    # Create a private network, which allows host-only access to the machine
+    # using a specific IP.
+    config.vm.network :private_network, ip: "192.168.33.20"
     # Create a forwarded port mapping which allows access to a specific port
     # within the machine from a port on the host machine. In the example below,
     # accessing "localhost:8080" will access port 80 on the guest machine.
@@ -17,6 +20,7 @@ Vagrant.configure("2") do |config|
     cfg.vm.provision :chef_solo do |chef|
       chef.cookbooks_path = File.join(HERE, 'cookbooks')
       chef.add_recipe("apt")
+      chef.add_recipe("main")
     end
   end
 end

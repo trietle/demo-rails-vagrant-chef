@@ -1,7 +1,7 @@
 package "libshadow-ruby1.8"
 package "zsh"
-include_recipe "main::install_rbenv"
-#include_recipe "nginx::source"
+include_recipe "main::rbenv"
+include_recipe "main::nginx"
 
 # node refer to Vagrant file at chef.json = values
 # http://wiki.opscode.com/display/chef/resources#Resources-User

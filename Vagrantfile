@@ -21,6 +21,13 @@ Vagrant.configure("2") do |config|
       chef.cookbooks_path = File.join(HERE, 'cookbooks')
       chef.add_recipe("apt")
       chef.add_recipe("main")
+      chef.json = {
+        :user => {
+          :name => "deployer",
+          # use `openssl passwd -1 your_password` to generate hash pw
+          :password => "$1$6t8mGT2j$tobx3nBoA8sq.aGL6e9R20"
+        }
+      }
     end
   end
 end

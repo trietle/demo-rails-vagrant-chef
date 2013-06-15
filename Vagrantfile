@@ -21,10 +21,18 @@ Vagrant.configure("2") do |config|
       chef.add_recipe("apt")
       chef.add_recipe("main")
       chef.add_recipe("postgresql::client")
+      chef.add_recipe("postgresql::libpq")
       chef.json = {
         :user => {
           :name => "deployer",
-          :password => "$1$vcvMS62r$.nB8ioOmjczCT60ZkH9zi0" #=> use `openssl passwd -1 "deployer"` to generate hash pw
+          :password => "$1$vcvMS62r$.nB8ioOmjczCT60ZkH9zi0", #=> use `openssl passwd -1 "deployer"` to generate hash pw,
+          :ls_color => true
+        },
+        :nginx => {
+          :passenger => {
+            :version => "4.0.5"
+          },
+          :rails_app => 'blog'
         }
       }
     end

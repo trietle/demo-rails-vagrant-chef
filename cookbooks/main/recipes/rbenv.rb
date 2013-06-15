@@ -8,10 +8,7 @@ rbenv_ruby "2.0.0-p195" do
   global true #set as global
 end
 
-rbenv_gem "ruby-shadow" do
-  ruby_version "2.0.0-p195"
-end
-
-rbenv_gem "bundler" do
+rbenv_gem "passenger" do
+  version node[:nginx][:passenger][:version]
   ruby_version "2.0.0-p195"
 end

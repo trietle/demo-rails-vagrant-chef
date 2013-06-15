@@ -17,8 +17,12 @@ The demo app builds two boxes, web server and postgresql server Ubuntu 12.04 ser
 
     vagrant up web
 
+  Access with ip: 192.168.33.20
+
 ### Postgresql server
 
   Build a database instance:
 
     vagrant up database
+
+  Access with ip: 192.168.33.25

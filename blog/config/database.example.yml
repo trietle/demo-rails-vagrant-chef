@@ -1,0 +1,20 @@
+login: &login
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  username: postgres
+  password: postgres
+  host: localhost
+  port: 5432
+
+development:
+  <<: *login
+  database: blog_development
+
+test:
+  <<: *login
+  database: blog_test
+
+production:
+  <<: *login
+  database: db-production

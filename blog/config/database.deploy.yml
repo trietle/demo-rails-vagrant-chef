@@ -1,0 +1,9 @@
+production:
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  username: deployer
+  password: deployer #should be changed in manually
+  host: 192.168.33.25
+  port: 5432
+  database: db-production

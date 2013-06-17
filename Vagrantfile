@@ -26,11 +26,16 @@ Vagrant.configure("2") do |config|
         :user => {
           :name => "deployer",
           :password => "$1$vcvMS62r$.nB8ioOmjczCT60ZkH9zi0", #=> use `openssl passwd -1 "deployer"` to generate hash pw,
-          :ls_color => true
+        },
+        :rbenv => {
+          :group_users => "deployer"
         },
         :nginx => {
           :passenger => {
             :version => "4.0.5"
+          },
+          :source => {
+            :modules => "passenger"
           },
           :rails_app => 'blog'
         }
@@ -58,8 +63,8 @@ Vagrant.configure("2") do |config|
           :version  => "9.1",
           :listen_addresses => "*",
           :pg_hba => [
-            "host all all 0.0.0.0/0 md5",
-            "host all all ::1/0 md5",
+            { :type => "host", :db => "all", :user => "all", :addr => "0.0.0.0/0", :method => "md5"},
+            { :type => "host", :db => "all", :user => "all", :addr => "::1/0", :method => "md5"},
           ],
           :users => [
             { :username => "postgres", :password => "postgres",
